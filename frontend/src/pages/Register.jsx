@@ -33,7 +33,7 @@ function Register() {
     try {
       const userData = { name, email, password };
       // Call Backend API
-      await axios.post('http://localhost:5000/api/users', userData);
+      await axios.post('https://career-canvas-qtnw.onrender.com/api/users', userData);
       
       toast.success('Registration Successful! Please Login.');
       navigate('/login'); // Move user to login page

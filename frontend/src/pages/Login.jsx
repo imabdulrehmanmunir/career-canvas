@@ -26,7 +26,7 @@ function Login() {
     try {
       const userData = { email, password };
       // 1. Send credentials to backend
-      const response = await axios.post('http://localhost:5000/api/users/login', userData);
+      const response = await axios.post('https://career-canvas-qtnw.onrender.com/api/users/login', userData);
 
       // 2. Save the "ID Badge" (Token) to browser storage
       if (response.data) {

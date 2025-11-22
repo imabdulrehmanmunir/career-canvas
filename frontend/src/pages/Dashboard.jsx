@@ -32,7 +32,7 @@ function Dashboard() {
           Authorization: `Bearer ${user.token}`, // <--- THE KEY TO THE CASTLE
         },
       };
-      const response = await axios.get('http://localhost:5000/api/jobs', config);
+      const response = await axios.get('https://career-canvas-qtnw.onrender.com/api/jobs', config);
       setJobs(response.data);
     } catch (error) {
       toast.error('Failed to fetch jobs');
@@ -46,7 +46,7 @@ function Dashboard() {
     e.preventDefault();
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const response = await axios.post('http://localhost:5000/api/jobs', { company, position }, config);
+      const response = await axios.post('https://career-canvas-qtnw.onrender.com/api/jobs', { company, position }, config);
       
       setJobs([...jobs, response.data]); // Add to list instantly
       setCompany('');
@@ -62,7 +62,7 @@ function Dashboard() {
     if (!window.confirm('Delete this application?')) return;
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      await axios.delete(`http://localhost:5000/api/jobs/${id}`, config);
+      await axios.delete(`https://career-canvas-qtnw.onrender.com/api/jobs/${id}`, config);
       setJobs(jobs.filter((job) => job._id !== id));
       toast.success('Deleted');
     } catch (error) {
@@ -74,7 +74,7 @@ function Dashboard() {
   const updateStatus = async (id, newStatus) => {
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const response = await axios.put(`http://localhost:5000/api/jobs/${id}`, { status: newStatus }, config);
+      const response = await axios.put(`https://career-canvas-qtnw.onrender.com/api/jobs/${id}`, { status: newStatus }, config);
       
       // Update UI
       setJobs(jobs.map((job) => (job._id === id ? response.data : job)));
